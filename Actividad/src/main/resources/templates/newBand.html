@@ -1,0 +1,75 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Banda</title>
+    <style>
+        /* Estilos CSS para mejorar la apariencia del formulario */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<form th:action="@{/band/new}" method="post" th:object="${band}">
+    <label for="name">Nombre de la banda:</label>
+    <input th:field="*{name}" type="text" id="name"  required>
+
+    <label for="genre">Genero musical:</label>
+    <input th:field="*{genre}" type="text" id="genre" required>
+
+    <label for="members">No. miembros:</label>
+    <input th:field="*{members}" type="number" id="members" required>
+
+    <label for="country">Pais de origen de la banda:</label>
+    <input th:field="*{country}" type="text" id="country" required>
+
+    <label for="year">Año de fundacion de la banda:</label>
+    <input th:field="*{year}" type="number" id="year" required>
+
+    <label for="description">Describa brevemente a la banda:</label>
+    <textarea th:field="*{description}" id="description" required>
+        Coloque aca la descripción
+    </textarea>
+
+    <input type="submit" value="Crear Banda">
+</form>
+
+</body>
+</html>
